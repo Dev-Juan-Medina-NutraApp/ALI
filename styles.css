@@ -53,6 +53,10 @@
     font-weight: 700;
 }
 
+#returcustomer {
+    font-style: italic;
+}
+
 .container {
     width: 40%;
     margin: 30px auto;

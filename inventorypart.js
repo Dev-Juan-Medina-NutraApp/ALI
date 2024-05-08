@@ -12,7 +12,24 @@ function inventoryPart() {
         const HTMLResponse = document.querySelector("#app");
         const inventoryList = data.result.Inventory;
         const paragraph = document.createElement('p');
+        
         paragraph.textContent = JSON.stringify(data.message);
+        // Obtener el nombre del producto
+        const productName = data.result.Inventory[0].PartDesc;
+
+        // Crear un elemento h2 para mostrar el nombre del producto
+        const productNameElement = document.createElement('h2');
+        productNameElement.textContent = `El nombre del producto es: ${productName}`;
+        // Agregar el elemento h2 al elemento HTMLResponse
+        HTMLResponse.appendChild(productNameElement);
+        const productNamedesc = document.createElement('h3');
+        productNamedesc.textContent = `y cuenta con el siguiente inventario en EPICOR:`;
+        HTMLResponse.appendChild(productNamedesc);
+
+        
+        const emptyLine1 = document.createElement('div');
+        emptyLine1.style.marginBottom = "40px"; // Ajusta el valor según sea necesario
+        HTMLResponse.appendChild(emptyLine1);
         const ul = document.createElement('ul');
         //const tpl = data.map((Inventory) => `<li>${Inventory.PartDesc}   ${Inventory.QtyOnHand}</li>`);
         //HTMLResponse.innerHTML = `<ul>${tpl}</ul>`
@@ -21,7 +38,7 @@ function inventoryPart() {
             const li = document.createElement('li');
       
             // Crear el contenido del elemento li con las propiedades deseadas
-            const content = `Producto: ${item.PartDesc},|   --   |Planta: ${item.Plant},|   --   |Cantidad: ${item.QtyOnHand}`;
+            const content = `EL lote ${item.LotNumber} tiene: ${item.QtyOnHand} Unidad(es) en la planta ${item.Plant}.`;
             li.textContent = content;
       
             // Agregar el elemento li a la lista ul

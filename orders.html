@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/styles/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>API-EPICOR - ORDERS</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <img class="logo" src="/styles/logo.png" alt="logo-alivia">
+        <ul class="options-navbar">
+            <li><a href="/fetch/inventorypart.html" data-endpoint="inventoryPart">Inventario de Parte o SKU</a></li>
+            <li><a href="/fetch/index.html" data-endpoint="otherEndpoint">Creación de Usuarios</a></li>
+            <!-- Agrega más elementos de menú según tus necesidades -->
+        </ul>
+    </nav>
+    <div class="title">
+        <h1 >Creación de Ordenes en Epicor</h1>
+    </div>
+    <div class="container">
+        <form id="orders">
+            <h3 class="client-title" for="docnumcli">Cliente:</h3>
+            <input type="text" id="docnumcli" name="docnumcli" required>
+            <h3 class="qty-title" for="Cant1">Cantidades:</h3>
+            <div class="container-nutra">
+                
+                <div class="container-products">
+                    <input class="qty" type="number" id="Cant1" name="Cant1" required disabled value="">
+                    <input type="checkbox" id="checkbox1" name="checkbox1" value="INNRS001">
+                    <label class="products" for="CommonRegime">NEURESSENS®</label>
+                </div>
+                <div class="container-products">
+                    <input class="qty" type="number" id="Cant2" name="Cant2" required disabled value="">
+                    <input type="checkbox" id="checkbox2" name="checkbox2" value="INMUV002">
+                    <label class="products" for="CommonRegime">MULTIESSENS®</label>
+                </div>
+                <div class="container-products">
+                    <input class="qty" type="number" id="Cant3" name="Cant3" required disabled value="">
+                    <input type="checkbox" id="checkbox3" name="checkbox3" value="INMYS003">
+                    <label class="products" for="SimplifiedRegime">MYOESSENS®</label>
+                </div>
+            </div>
+            <button type="submit">Agregar</button>
+        </form>
+    </div>
+    <div id="app" style="text-align: center; margin-bottom: 300px;"></div>
+    <script src="orders.js" type="module"></script>
+</body>
+
+</html>

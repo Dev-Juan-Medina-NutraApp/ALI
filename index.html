@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/styles/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>API-EPICOR - USER</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <img  class="logo" src="/styles/logo.png" alt="logo-alivia">
+        <ul class="options-navbar">
+            <li><a href="/fetch/orders.html" data-endpoint="inventoryPart">Creación de Ordenes</a></li>
+            <li><a href="/fetch/inventorypart.html" data-endpoint="otherEndpoint">Inventario de Parte o SKU</a></li>
+            <!-- Agrega más elementos de menú según tus necesidades -->
+        </ul>
+    </nav>
+    <div id="app" class="title"><h1 >Registro de Clientes en Epicor</h1></div>
+    
+    <script>
+        function limitarCheckbox(checkBox) {
+            var checkboxes = document.getElementsByName('opcion');
+            checkboxes.forEach(function (cb) {
+                if (cb !== checkBox) {
+                    cb.checked = false;
+                }
+            });
+        }
+    </script>
+    <div class="container">
+        <form id="customer">
+            <label for="DocumentNum">Documento:</label>
+            <input type="text" id="docnum" name="docnum" required>
+            <label for="DocumentType">Tipo Documento:</label>
+            <select name="lenguajes" id="tipodoc">
+                <option value="13">Cédula de Ciudadanía</option>
+                <option value="42">Documento de ID extranjero</option>
+                <option value="31">NIT</option>
+            </select>
+            <label for="FirstName">Nombres:</label>
+            <input type="text" id="FirstName" name="FirstName" required>
+            <label for="FirstLastName">Apellidos:</label>
+            <input type="text" id="FirstLastName" name="FirstLastName" required>
+            <label for="Address">Dirección:</label>
+            <input type="text" id="Address" name="Address" required>
+            <label for="CellPhone">Telefono:</label>
+            <input type="text" id="CellPhone" name="CellPhone" required>
+            <label for="Email">Correo Electronico:</label>
+            <input type="text" id="Email" name="Email" required>
+            <label for="CellPhone">Celular:</label>
+            <input type="text" id="CelPhone" name="CelPhone" required><br>
+            <div class="select_options">
+            <input type="checkbox" name="opcion" onchange="limitarCheckbox(this)" id="CommonRegime">
+            <label for="CommonRegime">Regimen Comun:</label><br>
+            <input type="checkbox" name="opcion" onchange="limitarCheckbox(this)" id="SimplifiedRegime">
+            <label for="SimplifiedRegime">Regimen Simplificado:</label><br>
+            <input type="checkbox" name="opcion" onchange="limitarCheckbox(this)" id="ImportantTaxpayer">
+            <label for="opcion3">Gran Contribuyente:</label>
+        </div>
+            <select name="personas" id="person">
+                <option value="N">Persona Natural</option>
+                <option value="J">Persona Juridica (Company)</option>
+            </select><br><br>
+            <button type="submit">Agregar</button>
+        </form>
+    </div>
+    <div id="returncustomer" style="text-align: center; margin-top: 50px;"></div>
+    <script src="index.js" type="module"></script>
+</body>
+
+</html>

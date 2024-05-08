@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/styles/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>API-EPICOR - INVENTORY</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <img class="logo" src="/styles/logo.png" alt="logo-alivia">
+        <ul class="options-navbar">
+            <li><a href="/fetch/orders.html" data-endpoint="inventoryPart">Creación de Ordenes</a></li>
+            <li><a href="/fetch/index.html" data-endpoint="otherEndpoint">Creación de Usuarios</a></li>
+            <!-- Agrega más elementos de menú según tus necesidades -->
+        </ul>
+    </nav>
+    <div class="title">
+        <h1>Consulta de Inventario en Epicor</h1>
+        <p>(Consulta por SKU de producto)</p>
+    </div>
+
+    
+    <div class="container">
+        <form id="formPartNum">
+            <label for="partNum">Número de parte:</label>
+            <input type="text" id="partNum" name="partNum" required>
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+    <div id="app"></div>
+    <script src="inventorypart.js" type="module"></script>
+</body>
+
+</html>

@@ -17,17 +17,17 @@
     <nav class="navbar">
         <img class="logo" src="./logo.png" alt="logo-alivia">
         <ul class="options-navbar">
-            <li><a href="./orders.html" data-endpoint="inventoryPart">Creación de Ordenes</a></li>
-            <li><a href="./index.html" data-endpoint="otherEndpoint">Creación de Usuarios</a></li>
+            <li><a href="./index.html" data-endpoint="otherEndpoint">1. Creación de Usuarios</a></li>
+            <li><a href="./orders.html" data-endpoint="inventoryPart">2. Creación de Ordenes</a></li>
             <!-- Agrega más elementos de menú según tus necesidades -->
         </ul>
     </nav>
     <div class="title">
-        <h1>Consulta de Inventario en Epicor</h1>
+        <h1>3. Consulta de Inventario en Epicor</h1>
+    </div>
+    <div class="title">
         <p>(Consulta por SKU de producto)</p>
     </div>
-
-    
     <div class="container">
         <form id="formPartNum">
             <label for="partNum">Número de parte:</label>
@@ -36,6 +36,17 @@
         </form>
     </div>
     <div id="app" style="text-align: center; margin-top: 50px; margin-bottom: 200px; font-style: italic; font-weight: bold;"></div>
+    <div class="title">
+        <p>(Consulta por Planta)</p>
+    </div>
+    <div class="container">
+        <form id="formPlant">
+            <label for="partNum">Nombre de la Planta:</label>
+            <input type="text" id="Plant" name="Plant" required>
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+    <div id="appPlant" style="text-align: center; margin-top: 50px; margin-bottom: 200px; font-style: italic; font-weight: bold;"></div>
     <script src="inventorypart.js" type="module"></script>
 </body>
 

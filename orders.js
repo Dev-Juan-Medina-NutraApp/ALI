@@ -1,5 +1,5 @@
 const API_URL = 'https://epicorkinetic.nutrabiotics.co/e10pruebas/api/v2/efx/C01/APIALIVIA';
-const xhr = new XMLHttpRequest();
+let orderNum;
 
 // Obtener referencias a los elementos
 const checkbox1 = document.getElementById('checkbox1');
@@ -20,8 +20,6 @@ checkbox3.addEventListener('change', function() {
   input3.disabled = !this.checked;
 });
 
-
-
 // ============================================================
 // =================== RESPUESTA Orders =======================
 // ============================================================
@@ -40,8 +38,45 @@ function CreateOrders() {
 
         // Agregar el párrafo al elemento HTML
         HTMLResponse.appendChild(paragraph);
+        console.log(dataorders.OrderNum);
+        orderNum = dataorders.OrderNum;
+
+        // Crear un nuevo objeto XMLHttpRequest para la solicitud de embarque
+        const xhrShipment = new XMLHttpRequest();
+        const datosEmbarque = { "OrderNum": orderNum };
+
+        xhrShipment.open('POST', `${API_URL}/Shipment`);
+        xhrShipment.setRequestHeader('x-api-key', 'daJJpGNt9IvBlSLfpl0oxsWx1ngwcte8fit9lknG8Y9wA');
+        xhrShipment.setRequestHeader('Authorization', 'Basic ' + btoa('JMEDINA:Nutra2023*#'));
+        xhrShipment.setRequestHeader('Content-Type', 'application/json');
+        xhrShipment.addEventListener("loadend", CreateEmbarque);
+        xhrShipment.send(JSON.stringify(datosEmbarque));
     }
 }
+
+function CreateEmbarque() {
+    if (this.readyState === 4) {
+      if (this.status === 200) {
+        const dataEmbarque = JSON.parse(this.response);
+        console.log(dataEmbarque);
+  
+        // Crear un nuevo elemento <p>
+        const paragraph = document.createElement("p");
+  
+        // Asignar el contenido de dataEmbarque al texto del párrafo
+        paragraph.textContent = JSON.stringify(dataEmbarque.message);
+  
+        // Obtener el elemento HTML donde deseas agregar el párrafo
+        const HTMLResponse = document.querySelector("#app");
+  
+        // Agregar el párrafo al elemento HTML
+        HTMLResponse.appendChild(paragraph);
+      } else {
+        console.error("Error en la solicitud de embarque:", this.status);
+        // Manejar el error de la solicitud de embarque
+      }
+    }
+  }
 
 //xhr.addEventListener("load", inventoryPart);
 //const datos = {
@@ -92,14 +127,15 @@ orders.addEventListener('submit', function(event) {
               "Partes": partes
           }
       };
-    
-      console.log(datos);
-      xhr.open('POST', `${API_URL}/Ordenes`);
-      xhr.setRequestHeader('x-api-key', 'daJJpGNt9IvBlSLfpl0oxsWx1ngwcte8fit9lknG8Y9wA');
-      xhr.setRequestHeader('Authorization', 'Basic ' + btoa('JMEDINA:Nutra2023*#'));
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.addEventListener("load", CreateOrders);
-      xhr.send(JSON.stringify(datos));
+
+    console.log(datos);
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', `${API_URL}/Ordenes`);
+    xhr.setRequestHeader('x-api-key', 'daJJpGNt9IvBlSLfpl0oxsWx1ngwcte8fit9lknG8Y9wA');
+    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('JMEDINA:Nutra2023*#'));
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.addEventListener("load", CreateOrders);
+    xhr.send(JSON.stringify(datos));
   });
 
 

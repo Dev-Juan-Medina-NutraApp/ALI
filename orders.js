@@ -1,4 +1,4 @@
-const API_URL = 'https://epicorkinetic.nutrabiotics.co/e10pruebas/api/v2/efx/C01/APIALIVIA';
+const API_URL = 'https://epicorkinetic.nutrabiotics.co/e10pruebas/api/v2/efx/C01/API-ALIVIA';
 let orderNum;
 
 // Obtener referencias a los elementos
@@ -46,7 +46,8 @@ function CreateOrders() {
         const datosEmbarque = { "OrderNum": orderNum };
 
         xhrShipment.open('POST', `${API_URL}/Shipment`);
-        xhrShipment.setRequestHeader('x-api-key', 'daJJpGNt9IvBlSLfpl0oxsWx1ngwcte8fit9lknG8Y9wA');
+        //xhrShipment.setRequestHeader('x-api-key', 'daJJpGNt9IvBlSLfpl0oxsWx1ngwcte8fit9lknG8Y9wA');
+        xhr.setRequestHeader('x-api-key', 'dOzSD2TCwZNcaOIUvp7rscPIjHukOXhhQEmjmzA2iDhks');
         xhrShipment.setRequestHeader('Authorization', 'Basic ' + btoa('JMEDINA:Nutra2023*#'));
         xhrShipment.setRequestHeader('Content-Type', 'application/json');
         xhrShipment.addEventListener("loadend", CreateEmbarque);
@@ -131,8 +132,9 @@ orders.addEventListener('submit', function(event) {
     console.log(datos);
     const xhr = new XMLHttpRequest();
     xhr.open('POST', `${API_URL}/Ordenes`);
-    xhr.setRequestHeader('x-api-key', 'daJJpGNt9IvBlSLfpl0oxsWx1ngwcte8fit9lknG8Y9wA');
-    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('JMEDINA:Nutra2023*#'));
+    //xhr.setRequestHeader('x-api-key', 'daJJpGNt9IvBlSLfpl0oxsWx1ngwcte8fit9lknG8Y9wA');
+    xhr.setRequestHeader('x-api-key', 'dOzSD2TCwZNcaOIUvp7rscPIjHukOXhhQEmjmzA2iDhks');
+    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('USERAPI:S3rv3r2024*#.@'));
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.addEventListener("load", CreateOrders);
     xhr.send(JSON.stringify(datos));

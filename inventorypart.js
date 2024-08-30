@@ -1,4 +1,4 @@
-const API_URL = 'https://epicorkinetic.nutrabiotics.co/e10pruebas/api/v2/efx/C01/APIALIVIA';
+const API_URL = 'https://epicorkinetic.nutrabiotics.co/e10pruebas/api/v2/efx/C01/API-ALIVIA';
 const xhr = new XMLHttpRequest();
 
 const formInventory = document.getElementById('formPartNum');
@@ -71,8 +71,9 @@ formInventory.addEventListener('submit', function(event) {
       };
       console.log(datos);
       xhr.open('POST', `${API_URL}/InventoryPart`);
-      xhr.setRequestHeader('x-api-key', 'daJJpGNt9IvBlSLfpl0oxsWx1ngwcte8fit9lknG8Y9wA');
-      xhr.setRequestHeader('Authorization', 'Basic ' + btoa('JMEDINA:Nutra2023*#'));
+      //xhr.setRequestHeader('x-api-key', 'daJJpGNt9IvBlSLfpl0oxsWx1ngwcte8fit9lknG8Y9wA');
+      xhr.setRequestHeader('x-api-key', 'dOzSD2TCwZNcaOIUvp7rscPIjHukOXhhQEmjmzA2iDhks');
+      xhr.setRequestHeader('Authorization', 'Basic ' + btoa('USERAPI:S3rv3r2024*#.@'));
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.addEventListener("load", inventoryPart);
       xhr.send(JSON.stringify(datos));
